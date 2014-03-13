@@ -56,6 +56,7 @@ function setup_localrc() {
             MY_ENABLED_SERVICES=$MY_ENABLED_SERVICES,quantum,q-svc,q-agt,q-dhcp,q-l3,q-meta
             echo "Q_USE_DEBUG_COMMAND=True" >>localrc
             echo "NETWORK_GATEWAY=10.1.0.1" >>localrc
+	    echo "Q_ML2_PLUGIN_MECHANISM_DRIVERS=openvswitch,ncs" >> localrc
         else
             MY_ENABLED_SERVICES=$MY_ENABLED_SERVICES,n-net
         fi
@@ -326,7 +327,8 @@ if [ "$DEVSTACK_GATE_TEMPEST" -eq "1" ]; then
     cd $BASE/new/tempest
     if [[ "$DEVSTACK_GATE_TEMPEST_REGEX" -ne "" ]] ; then
         echo "Running tempest with a custom regex filter"
-        sudo -H -u tempest tox -eall -- --concurrency=$TEMPEST_CONCURRENCY $DEVSTACK_GATE_TEMPEST_REGEX
+        #sudo -H -u tempest tox -eall -- --concurrency=$TEMPEST_CONCURRENCY $DEVSTACK_GATE_TEMPEST_REGEX
+        sudo -H -u tempest tox -eall -- --concurrency=$TEMPEST_CONCURRENCY "api.network"
         res=$?
     elif [[ "$DEVSTACK_GATE_TEMPEST_ALL" -eq "1" ]]; then
         echo "Running tempest all test suite"
