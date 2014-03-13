@@ -36,6 +36,8 @@ function setup_localrc() {
     DEFAULT_ENABLED_SERVICES=g-api,g-reg,key,n-api,n-crt,n-obj,n-cpu,n-sch,horizon,mysql,rabbit,sysstat,dstat,pidstat
     DEFAULT_ENABLED_SERVICES+=,s-proxy,s-account,s-container,s-object,cinder,c-api,c-vol,c-sch,n-cond
 
+    echo "Q_ML2_PLUGIN_MECHANISM_DRIVERS=openvswitch,ncs" >> localrc
+
     # Allow optional injection of ENABLED_SERVICES from the calling context
     if [ -z $ENABLED_SERVICES ] ; then
         MY_ENABLED_SERVICES=$DEFAULT_ENABLED_SERVICES
