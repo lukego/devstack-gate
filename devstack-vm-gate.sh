@@ -56,7 +56,6 @@ function setup_localrc() {
             MY_ENABLED_SERVICES=$MY_ENABLED_SERVICES,quantum,q-svc,q-agt,q-dhcp,q-l3,q-meta
             echo "Q_USE_DEBUG_COMMAND=True" >>localrc
             echo "NETWORK_GATEWAY=10.1.0.1" >>localrc
-	    echo "Q_ML2_PLUGIN_MECHANISM_DRIVERS=openvswitch,ncs" >> localrc
         else
             MY_ENABLED_SERVICES=$MY_ENABLED_SERVICES,n-net
         fi
@@ -97,6 +96,7 @@ function setup_localrc() {
             MY_ENABLED_SERVICES=$MY_ENABLED_SERVICES,quantum,q-svc,q-agt,q-dhcp,q-l3,q-meta,q-lbaas,q-vpn,q-fwaas,q-metering
             echo "Q_USE_DEBUG_COMMAND=True" >>localrc
             echo "NETWORK_GATEWAY=10.1.0.1" >>localrc
+	    echo "Q_ML2_PLUGIN_MECHANISM_DRIVERS=openvswitch,ncs" >> localrc
         else
             MY_ENABLED_SERVICES=$MY_ENABLED_SERVICES,n-net
         fi
